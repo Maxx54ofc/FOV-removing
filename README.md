@@ -1,18 +1,24 @@
 local function removeFOVScript()
-    -- Procurar na pasta Players
+    -- Procurar na pasta Players > [Player] > PlayerScripts
     local players = game:GetService("Players")
     for _, player in pairs(players:GetChildren()) do
-        local fovScript = player:FindFirstChild("FOV")
-        if fovScript and fovScript:IsA("Script") then
-            fovScript:Destroy()
+        local playerScripts = player:FindFirstChild("PlayerScripts")
+        if playerScripts then
+            local fovScript = playerScripts:FindFirstChild("FOV")
+            if fovScript and fovScript:IsA("Script") then
+                fovScript:Destroy()
+            end
         end
     end
 
-    -- Procurar na pasta StarterPlayer
+    -- Procurar na pasta StarterPlayer > StarterPlayerScripts
     local starterPlayer = game:GetService("StarterPlayer")
-    local fovScript = starterPlayer:FindFirstChild("FOV")
-    if fovScript and fovScript:IsA("Script") then
-        fovScript:Destroy()
+    local starterPlayerScripts = starterPlayer:FindFirstChild("StarterPlayerScripts")
+    if starterPlayerScripts then
+        local fovScript = starterPlayerScripts:FindFirstChild("FOV")
+        if fovScript and fovScript:IsA("Script") then
+            fovScript:Destroy()
+        end
     end
 end
 
